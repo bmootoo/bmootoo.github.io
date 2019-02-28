@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<head>
+<script src="/assets/jquery.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Coiny" rel="stylesheet">
+<style>
+body {
+  font-family: 'Coiny', cursive;
+  margin: 0 auto;
+  max-width: 600px;
+  background: blue;
+}
+ul {
+      padding: 10px;
+      background: rgba(12,1,12,12);
+      text-align: center;
+    }
+    li {
+      display: inline;
+      padding: 0px 10px 0px 10px;
+    }
+div {
+  height: 300px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+}
+h1 {
+ font-family: 'Coiny', cursive;
+  text-align: center;
+  font-size: 100px;
+  color: white;
+  margin: 80px 0 0 0;
+}
+h2 {
+  text-align: center;
+  color:red;
+  margin: 0px 0 80px 0;
+}
+p {
+  color: rgba(255,255,255,1);
+  background:  white;
+  background: linear-gradient(bottom, rgba(255,255,255,1), rgba(255,255,255,1));
+  background: -webkit-linear-gradient(bottom, rgba(255,2,0,1), rgba(255,0,0,.4));
+  background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+}
+
+small {
+  opacity: 0;
+}
+
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 5;
+}
+
+.first{
+  background-image: url("http://andrewwiederhorn.com/wp-content/uploads/2014/05/peteysburgers.jpg");
+  background-size: 100% 100%;
+  height: 250px;
+}
+.second{
+  background-image: url("https://nyceats.files.wordpress.com/2009/04/nyc-food-guy-dot-com-4461.jpg");
+  background-size: 100% 100%;
+  height: 300px;
+}
+.dessert{
+  background-image: url("https://media.timeout.com/images/100914189/image.jpg");
+  background-size: 100% 100%;
+  height: 350px;
+}
+.price {
+  float: right;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 26px;
+    margin: 20px 0 30px 0;
+  }
+  div {
+    margin: 20px 15px 0 12px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  small {
+    font-size: 50px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+<ul>
+      <li><button onclick=appetizers()>Appetizers</button></li>
+      <li><button onclick=entrees()>Entrees</button></li>
+      <li><button onclick=desserts()>Desserts</button></li>
+</ul>
+<h1>Brandon's food stop</h1>
+<h2> THE BEST NY RESTAURANT </h2>
+
+<div id="food">
+
+</div>
+
+<script>
+
+appetizersImages = [
+  'url("https://img.sndimg.com/food/image/upload/w_412,h_232,fl_progressive,c_fill,q_80/v1/img/recipes/11/01/09/fLywe0TSUaX78kUAShoe_Chicken-Quesadilla-5.png")',
+  'url("https://inspiredbycharm.com/wp-content/uploads/2017/01/super-bowl-appetizer-recipes.jpg")',
+  'url("https://www.yellowblissroad.com/wp-content/uploads/2015/07/Yummy-Pizza-Pinwheels.jpg")',
+]
+
+entreesImages = [
+  'url("https://www.beefobradys.com/images/entrees-grilled-shrimp.jpg")',
+  'url("http://www.mrsdash.com/sites/default/files/entree-hot.jpg")',
+  'url("https://www.beefobradys.com/images/grilled-surf-and-turf.jpg")',
+  ]
+  
+  dessertsImages = [
+    'url("https://images-gmi-pmc.edge-generalmills.com/c2462c96-4a12-484b-ad78-4bbc2ce6505f.jpg")',
+    'url("https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2018/09/dessert-main-image-molten-cake.jpg")',
+    'url("https://livforcake.com/wp-content/uploads/2017/06/vanilla-cake-8.jpg")',
+    ]
+  
+  appetizersDivs = [
+    '<div class="item"><p>Chicken quesadilla<span class="price">$10</span><br /><small>Get a Chicken quesadilla for 15 dollars at one of the best places to eat and cooked at the best quality</small></p></div>',
+    
+    '<div class="item"> <p>Hambuger slides<span class="price">$5</span><br /> <small>buger slides for only 5 dollard for 6 slides coked at the very best </small></p> </div>',
+    
+    '<div class="item"> <p>Pizza PIn wheels <span class="price">$2.50</span><br /> <small>get pizza wheels for 2.50 with any topping u want.</small></p></div>',
+    ]
+    
+  EntreesDivs = [
+    '<div class="item"><p>rice with shrimp<span class="price">$16</span><br /><small> get rice with shrimp with any side order </small></p></div>',
+    
+    '<div class="item"> <p>Steak with steamed vegtables <span class="price">$20</span><br /> <small>Get your steak cooked how u want it with vegtables at the best quality for 20 dollars . </small></p> </div>',
+    
+    '<div class="item"> <p>Steak with shrimp <span class="price">$25</span><br /> <small>Get steak cooked how u want with shrimp cooked how uwant at the best quality for only 25 dollars.</small></p></div>',
+    ]
+
+  DessertsDivs = [
+    '<div class="item"><p>Chocolate cake <span class="price">$4</span><br /><small>for desert buy choclate cake with any type of toping thatwe have to select from for only 4 dollars </small></p></div>',
+    
+    '<div class="item"> <p>Molten cake <span class="price">$6</span><br /> <small>nut our molten cake for a burst of chocolate taste in your mouth . this is our special cake we make for only 6 dollars. </small></p> </div>',
+    
+    '<div class="item"> <p>vanilla cake <span class="price">$4</span><br /> <small>buy our vannila cake for your desert with any topping u like that we have to select fromfor only  4 dollars.</small></p></div>',
+    ]
+
+  function appetizers() {
+   appetizer = document.getElementById("food")
+   appetizer.innerHTML = ''
+	 appetizer.innerHTML += appetizersDivs[0]
+   appetizer.innerHTML += appetizersDivs[1]
+   appetizer.innerHTML += appetizersDivs[2]
+    //alert("choose your appetizer")
+   items = document.getElementsByClassName("item")
+   for (i=0; i<3; i=i+1) {
+		  items[i].style.background = appetizersImages[i]
+		  items[i].style.backgroundSize = '100% 100%'
+    }  
+  }
+ function entrees() {
+    //alert("choose your entrees")
+    appetizer = document.getElementById("food")
+    appetizer.innerHTML = ''
+	  appetizer.innerHTML += EntreesDivs[0]
+    appetizer.innerHTML += EntreesDivs[1]
+    appetizer.innerHTML += EntreesDivs[2]
+    items = document.getElementsByClassName("item")
+    for (i=0; i<3; i=i+1) {
+		  items[i].style.background = entreesImages[i]
+		   items[i].style.backgroundSize = '100% 100%'
+    }
+  }
+   function desserts() {
+    //("choose your dessert")
+     appetizer = document.getElementById("food")
+    appetizer.innerHTML = ''
+	  appetizer.innerHTML += DessertsDivs[0]
+    appetizer.innerHTML += DessertsDivs[1]
+    appetizer.innerHTML += DessertsDivs[2]
+    items = document.getElementsByClassName("item")
+    for (i=0; i<3; i=i+1) {
+		  items[i].style.background = dessertsImages[i]
+		   items[i].style.backgroundSize = '100% 100%'
+  }
+   }
+  $('div').on('click', function() {
+      $(this).toggleClass('show-description');
+  });
+</script>
+
+</body>
